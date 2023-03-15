@@ -1,5 +1,4 @@
-(ns lifecheq.zprint-autocommit-demo
-  (:gen-class))
+(ns lifecheq.zprint-autocommit-demo (:gen-class))
 
 (defn greet
   "Callable entry point to the application."
