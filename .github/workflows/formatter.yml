@@ -7,6 +7,9 @@ on:
 jobs:
   format-and-commit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: read
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -44,9 +47,6 @@ jobs:
           dir="`pwd`"
           find src test -regextype egrep -iregex '.*\.edn$|.*\.clj[sc]?$' -type f -print0 | xargs -0 zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
       - name: Commit changes
-        permissions:
-          contents: write
-          packages: read
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actor
