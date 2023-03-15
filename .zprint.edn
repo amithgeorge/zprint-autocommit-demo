@@ -1,0 +1,7 @@
+{:parse {:interpose "\n\n"} ;; max 1 blank line between top level forms
+ :width 80, ;; allow lines upto 110 characters long
+ :old? false, ;; don't keep backup copy when writing formatting changes
+ ;; Available styles - https://github.com/kkinnear/zprint/blob/main/doc/reference.md#available-styles
+ :style [:hiccup ;; allow for formatting hiccup vectors
+         :all-hang ;; is usually part of the classic config. certain installation methods sometimes turn this off
+         ]}
