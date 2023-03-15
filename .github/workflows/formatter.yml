@@ -38,7 +38,9 @@ jobs:
       - name: Get zprint version
         run: zprint --version
       - name: Format the code 
-        run: find src test -regextype egrep -iregex '.*\.edn$|.*\.clj[sc]?$' -type f -print0 | xargs -0 zprint --url-only "file://./.zprint.edn" --formatted-summary-write
+        run: |
+          dir="`pwd`"
+          find src test -regextype egrep -iregex '.*\.edn$|.*\.clj[sc]?$' -type f -print0 | xargs -0 zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
