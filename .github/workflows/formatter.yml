@@ -44,7 +44,7 @@ jobs:
         run: zprint --version
       - id: changed_files
         name: Get all added and modified files
-        uses: jitterbit/get-changed-files@v1
+        uses: masesgroup/retrieve-changed-files@v2
       - name: Print all changed files
         run: |
           echo "all files" ${{ steps.changed_files.outputs.all }};
