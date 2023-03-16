@@ -42,6 +42,16 @@ jobs:
         run: clojure --version
       - name: Get zprint version
         run: zprint --version
+      - id: changed_files
+        name: Get all added and modified files
+        uses: jitterbit/get-changed-files@v1
+      - name: Print all changed files
+        run: |
+          echo "all files" ${{ steps.changed_files.outputs.all }};
+          echo "added files" ${{ steps.changed_files.outputs.added }};
+          echo "modified files" ${{ steps.changed_files.outputs.modified }};
+          echo "added and modified files" ${{ steps.changed_files.outputs.added_modified }};
+          echo "renamed files" ${{ steps.changed_files.outputs.renamed }};
       - name: Format the code
         run: |
           dir="`pwd`"
