@@ -55,8 +55,8 @@ jobs:
       - name: Format the code
         run: |
           dir="`pwd`"
-          echo ${{ steps.changed_files.outputs.added_modified }} | grep -i -E '.*\.edn$|.*\.clj[sc]?$' -type f | xargs --verbose zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
-          echo ${{ steps.changed_files.outputs.renamed }} | grep -i -E '.*\.edn$|.*\.clj[sc]?$' -type f | xargs --verbose zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
+          echo ${{ steps.changed_files.outputs.added_modified }} | grep -i -E '.*\.edn$|.*\.clj[sc]?$' | xargs --verbose zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
+          echo ${{ steps.changed_files.outputs.renamed }} | grep -i -E '.*\.edn$|.*\.clj[sc]?$' | xargs --verbose zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
       # - name: Commit changes
       #   uses: EndBug/add-and-commit@v9
       #   with:
