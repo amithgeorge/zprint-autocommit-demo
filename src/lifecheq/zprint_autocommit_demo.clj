@@ -1,5 +1,4 @@
-(ns lifecheq.zprint-autocommit-demo
-  (:gen-class))
+(ns lifecheq.zprint-autocommit-demo (:gen-class))
 
 (defn greet
   "Callable entry point to the application."
@@ -10,3 +9,5 @@
   "I don't do a whole lot ... yet."
   [& args]
   (greet {:name (first args)}))
+
+;; file modified
