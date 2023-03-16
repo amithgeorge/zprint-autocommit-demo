@@ -1,4 +1,4 @@
-(ns lifecheq.one)
+(ns lifecheq.one-one)
 
 ;; file added
 ;; file added
