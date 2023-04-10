@@ -1,11 +1,11 @@
 name: Format clojure source using zprint
 on:
-  push:
-    branches:
-      - 'main'
+  pull_request:
+    types: [closed]
 
 jobs:
   format-and-commit:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: write
