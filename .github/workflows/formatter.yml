@@ -95,9 +95,9 @@ jobs:
           echo "latest_review_state=$latest_review_state" >> $GITHUB_OUTPUT
       - name: Print the step output
         run: |
-          echo "STEP OUTPUT: ${{ steps.check_pr_approved.latest_review_state }}"
+          echo "STEP OUTPUT: ${{ steps.check_pr_approved.outputs.latest_review_state }}"
       - name: Format the code if PR is approved
-        if: ${{ steps.check_pr_approved.latest_review_state == 'APPROVED' }}
+        if: ${{ steps.check_pr_approved.outputs.latest_review_state == 'APPROVED' }}
         run: |
           repo_full_name="${{ github.event.repository.full_name }}"
           pr_number="${{ github.event.pull_request.number }}"
