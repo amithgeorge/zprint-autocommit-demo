@@ -93,6 +93,9 @@ jobs:
           latest_review_state=$(curl --silent -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" $pr_url | bb -i -o '(->> *input* (str/join "") (#(json/decode %1 true)) (map :state) last)')
           echo "LATEST REVIEW STATE: $latest_review_state"
           echo "latest_review_state=$latest_review_state" >> $GITHUB_OUTPUT
+      - name: Print the step output
+        run: |
+          echo "STEP OUTPUT: ${{ steps.check_pr_approved.latest_review_state }}"
       - name: Format the code if PR is approved
         if: ${{ steps.check_pr_approved.latest_review_state == 'APPROVED' }}
         run: |
