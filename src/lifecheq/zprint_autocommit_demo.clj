@@ -1,9 +1,12 @@
 (ns lifecheq.zprint-autocommit-demo (:gen-class))
 
+
+
+
 (defn greet
-  "Callable entry point to the application."
+              "Callable entry point to the application."
   [data]
-  (println (str "Hello, " (or (:name data) "World") "!")))
+  (println            (str "Hello, " (or (:name data) "World") "!")))
 
 (defn -main
   "I don't do a whole lot ... yet."
