@@ -30,9 +30,6 @@ jobs:
         run: clojure --version
       - name: Get zprint version
         run: zprint --version
-      # - id: changed_files
-      #   name: Get all added and modified files
-      #   uses: masesgroup/retrieve-changed-files@076a92699259d81d1c607bd91f0e1e9d45fd3151 # v2
       - name: Format the code
         run: |
           repo_full_name="${{ github.event.repository.full_name }}"
@@ -45,11 +42,8 @@ jobs:
           files_in_pr=$(curl --silent -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" $pr_url | jq '.[].filename' | bb -i -o '(filter (fn [f] (fs/exists? (str/replace f "\"" ""))) *input*)')
           echo "FILES in PR: $files_in_pr"
 
-          files_to_format=$(echo $files_in_pr | grep -i -E '.*\.edn$|.*\.clj[sc]?$')
-          echo "FILES to format: $files_to_format"
-
           dir="`pwd`"
-          echo $files_to_format | xargs --verbose zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
+          echo $files_in_pr | grep -i -E '.*\.edn$|.*\.clj[sc]?$' | xargs --verbose zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
       - name: Commit changes
         uses: EndBug/add-and-commit@06d5ce73159a844acd53934e8ab33aee68ee3fd0 # v9.1.1
         with:
