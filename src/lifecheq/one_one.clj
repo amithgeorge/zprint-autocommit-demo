@@ -1,8 +1,6 @@
 (ns lifecheq.one-one)
 
 
-
-
 (def 
            name
        "AMITH")
