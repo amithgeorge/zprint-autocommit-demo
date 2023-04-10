@@ -4,7 +4,9 @@
     "clojure",
     "leiningen",
     "babashka",
-    "coreutils"
+    "coreutils",
+    "gh",
+    "jq"
   ],
   "shell": {
     "init_hook": null
