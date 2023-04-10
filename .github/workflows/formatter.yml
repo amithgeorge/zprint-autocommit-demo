@@ -35,7 +35,7 @@ jobs:
       - name: Format the code
         run: |
           repo_full_name="${{ github.event.repository.full_name }}"
-          pr_number="${{ github.event.number }}"
+          pr_number="${{ github.event.pull_request.number }}"
           echo "REPO: $repo_full_name , PR Number: $pr_number"
 
           pr_url="https://api.github.com/repos/${repo_full_name}/pulls/${pr_number}/files"
