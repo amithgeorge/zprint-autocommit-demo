@@ -38,9 +38,9 @@ jobs:
           dir="`pwd`"
           # echo ${{ steps.changed_files.outputs.added_modified }} ${{ steps.changed_files.outputs.renamed }} | bb -i -o '(mapcat #(str/split %1 #" +") *input*)' | grep -i -E '.*\.edn$|.*\.clj[sc]?$' | xargs --verbose zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
           #find dev src src-reports src-shared test test-reports -regextype egrep -iregex '.*\.edn$|.*\.clj[sc]?$' -type f -print0 | xargs -0 --verbose zprint --url-only "file://${dir}/.zprint.edn" --formatted-summary-write
-          owner_name="${{ github.event.owner }}"
-          repo_name="${{ github.event.repo }}"
-          pr_number="${{ github.event.pull_request.number }}"
+          owner_name="${{ github.event.organization }}"
+          repo_name="${{ github.event.repository }}"
+          pr_number="${{ github.event.number }}"
           pr_url="https://api.github.com/repos/${owner_name}/${repo_name}/pulls/${pr_number}/files"
 
           echo "OWNER: $owner_name , REPO: $repo_name , PR Number: $pr_number"
