@@ -1,11 +1,6 @@
 (ns lifecheq.one-one)
 
-
-
-
-(def 
-           name
-       "AMITH")
+(def name "AMITH")
 
 ;; file added
 ;; file added
